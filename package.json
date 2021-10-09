@@ -1,0 +1,25 @@
+{
+  "name": "youtube-clone",
+  "version": "1.0.0",
+  "description": "The clone of Youtube",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bizeun/Youtube-clone.git"
+  },
+  "script": {
+    "win": "node index.js"
+  },
+  "author": "Sukhyun Hwang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bizeun/Youtube-clone/issues"
+  },
+  "homepage": "https://github.com/Bizeun/Youtube-clone#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
