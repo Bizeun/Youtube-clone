@@ -2,16 +2,13 @@
   "name": "youtube-clone",
   "version": "1.0.0",
   "description": "The clone of Youtube",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Bizeun/Youtube-clone.git"
-  },
-  "script": {
-    "win": "node index.js"
   },
   "author": "Sukhyun Hwang",
   "license": "ISC",
@@ -21,5 +18,11 @@
   "homepage": "https://github.com/Bizeun/Youtube-clone#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "nodemon": "^2.0.13"
   }
 }
