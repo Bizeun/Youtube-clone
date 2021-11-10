@@ -1,26 +1,41 @@
 import express from "express";
 
 const PORT = 4000;
-
 const app = express();
 
-const handleHome = (req, res)=>{
-    return res.send("<h1>Hello</h1>");
+const urlLogger = (req, res, next) => {
+    console.log("Path:", req.path);
+    next();
 };
-const handleAbout = (req, res)=>{
-    return res.send("<h1>How about</h1>");
+const timeLogger = (req, res, next) => {
+    var nowTime = new Date();
+    var year = nowTime.getFullYear();
+    var month = nowTime.getMonth();
+    var date = nowTime.getDate();
+    
+    console.log("Time:", `${year}.${month + 1}.${date}`);
+    next();
 };
-const handleContact = (req, res)=>{
-    return res.send("<h1>Contact</h1>");
+const securityLogger = (req, res, next) =>{
+    const protocol = req.protocol;
+    if (protocol === "https"){
+        console.log("Secure");
+    }    
+    console.log("Insecure");
+    next();
 };
-const handleLogin = (req, res)=>{
-    return res.send("<h1>Login in here</h1>");
+const protectorMiddleware = (req, res) => {
+    console.log("❌");
+    return res.end();   
 };
 
+const handleHome = (req, res)=>{    
+    return res.send("<h1>It is home</h1>");
+};
+
+app.use(urlLogger,timeLogger,securityLogger);
 app.get("/", handleHome);
-app.get("/about",handleAbout);
-app.get("/contact",handleContact);
-app.get("/login",handleLogin);
+app.get("/protected", protectorMiddleware);
 
 
 const handleListening = () => console.log (`Server on port http://localhost:${PORT}`);
